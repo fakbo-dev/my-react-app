@@ -1,29 +1,4 @@
-.card {
-  border: 1px solid #C7B7A3;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
-  padding: 20px;
-  margin: 10px;
-  text-align: center;
-  max-width: 250px;
-  display: inline-block;
-}
-
-
-.card__image {
-  max-width: 60%;
+img {
+  width: 250px;
   height: auto;
-  margin-bottom: 10px;
-}
-
-.card__title {
-
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  color: #A91D3A;
-}
-
-.card__para {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #524C42;
 }
