@@ -1,9 +1,11 @@
-import Counter from "./Counter"
+
+import MyComponent from "./MyComponent.jsx"
+
 
 function App() {
   return (
     <>
-      <Counter />
+      <MyComponent />
     </>
   )
 }
