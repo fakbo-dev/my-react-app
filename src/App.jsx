@@ -1,11 +1,11 @@
-import ToDo from "./ToDo"
+
 
 
 
 function App() {
   return (
     <>
-      <ToDo />
+
     </>
   )
 }
