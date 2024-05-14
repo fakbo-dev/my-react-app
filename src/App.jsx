@@ -1,8 +1,9 @@
-import Test from "./Test.jsx"
+import Board from "./Board.jsx"
+
 function App() {
   return (
     <>
-      <Test />
+      <Board />
     </>
   )
 }
