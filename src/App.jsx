@@ -1,10 +1,9 @@
-import Gallery from "./Gallery.jsx"
+import Test from "./Test.jsx"
 
 function App() {
   return (
     <>
-      <h1>pog</h1>
-      <Gallery />
+      <Test />
     </>
   )
 }
