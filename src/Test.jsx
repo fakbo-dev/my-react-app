@@ -1,47 +1,25 @@
+import { recipes } from './data.js';
 
-
-function Test() {
-
-    const people = [
-        'Creola Katherine Johnson: matemática',
-        'Mario José Molina-Pasquel Henríquez: químico',
-        'Mohammad Abdus Salam: físico',
-        'Percy Lavon Julian: químico',
-        'Subrahmanyan Chandrasekhar: astrofísico'
-    ];
-
-    const people2 = [{
-        id: 0,
-        name: 'Creola Katherine Johnson',
-        profession: 'matemática',
-    }, {
-        id: 1,
-        name: 'Mario José Molina-Pasquel Henríquez',
-        profession: 'químico',
-    }, {
-        id: 2,
-        name: 'Mohammad Abdus Salam',
-        profession: 'físico',
-    }, {
-        id: 3,
-        name: 'Percy Lavon Julian',
-        profession: 'químico',
-    }, {
-        id: 4,
-        name: 'Subrahmanyan Chandrasekhar',
-        profession: 'astrofísico',
-    }];
-
-    const listItems = people.map((person) => <li>{person}</li>);
-    const filterItems = people2.filter((person) => person.profession === "químico");
-    const filterListItems = filterItems.map((item) => <li key={item.id}>{item}</li>);
+export default function RecipeList() {
     return (
-        <>
-            <ul>{listItems}</ul>
-            <br />
-            <ul>{filterListItems}</ul>
-        </>
-    )
+        <div>
+            <h1>Recetas</h1>
+            {recipes.map(recipe =>
+                <Recipe {...recipe} key={recipe.id} />
+            )}
+        </div>
+    );
 }
 
-export default Test
+function Recipe({ name, id, ingredients }) {
+
+
+    return (
+        <div key={id}>
+            <h2>{name}</h2>
+            <ul>
+                {ingredients.map((ingredient) => <li key={ingredient}>{ingredient}</li>)}
+            </ul>
+        </div>
+    )
+}
