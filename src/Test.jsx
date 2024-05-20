@@ -22,8 +22,8 @@ export default function Scoreboard() {
             ...player,
             firstName: e.target.value,
         });
-    }
 
+    }
     function handleLastNameChange(e) {
         setPlayer({
             ...player,
@@ -51,8 +51,7 @@ export default function Scoreboard() {
                 Apellido:
                 <input
                     value={player.lastName}
-                    onChange={handleLastNameChange}
-                />
+                    onChange={handleLastNameChange} />
             </label>
         </>
     );

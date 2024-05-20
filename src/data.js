@@ -71,3 +71,4 @@ export const sculptureList = [{
     url: 'https://i.imgur.com/6o5Vuyu.jpg',
     alt: 'Un grupo de esculturas de hipopótamos de bronce que emergen de la acera como si estuvieran nadando.'
 }];
+
