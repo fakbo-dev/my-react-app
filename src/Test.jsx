@@ -1,38 +1,50 @@
-import { useState } from "react";
-import { initialTravelPlan } from "./data.js";
+import { useState } from 'react';
+import { foods, filterItems } from "./data.js"
 
 
-function PlaceTree({ place }) {
-    const childPlaces = place.childPlaces;
-    return (
-        <li>
-            {place.title}
-            {childPlaces.length > 0 && (
-                <ol>
-                    {childPlaces.map(place => (
-                        <PlaceTree key={place.id} place={place} />
-                    ))}
-                </ol>
-            )}
-        </li>
-    );
-}
+export default function FilterableList() {
+    const [query, setQuery] = useState('');
+    const results = filterItems(foods, query);
 
-function Test() {
+    function handleChange(e) {
+        setQuery(e.target.value);
+    }
 
-    const [plan, setPlan] = useState(initialTravelPlan);
-    const planet = plan.childPlaces;
     return (
         <>
-            <h1>Lugares para visitar</h1>
-
-            <ol>
-                {planet.map(p => (
-                    <PlaceTree key={p.id} place={p} />
-                ))}
-            </ol>
+            <SearchBar
+                query={query}
+                onChange={handleChange}
+            />
+            <hr />
+            <List items={results} />
         </>
     );
 }
 
-export default Test
+function SearchBar({ query, onChange }) {
+    return (
+        <label>
+            Buscar:{' '}
+            <input
+                value={query}
+                onChange={onChange}
+            />
+        </label>
+    );
+}
+
+function List({ items }) {
+    return (
+        <table>
+            <tbody>
+                {items.map(food => (
+                    <tr key={food.id}>
+                        <td>{food.name}</td>
+                        <td>{food.description}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    );
+}
