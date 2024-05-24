@@ -1,50 +1,65 @@
 import { useState } from 'react';
-import { foods, filterItems } from "./data.js"
+import { places } from './data.js';
+import { getImageUrl } from './utils.js';
+import { context } from "./Context.jsx"
+import { useContext } from 'react';
 
 
-export default function FilterableList() {
-    const [query, setQuery] = useState('');
-    const results = filterItems(foods, query);
-
-    function handleChange(e) {
-        setQuery(e.target.value);
-    }
-
+export default function App() {
+    const [isLarge, setIsLarge] = useState(false);
+    const imageSize = isLarge ? 150 : 100;
     return (
         <>
-            <SearchBar
-                query={query}
-                onChange={handleChange}
-            />
+            <label>
+                <input
+                    type="checkbox"
+                    checked={isLarge}
+                    onChange={e => {
+                        setIsLarge(e.target.checked);
+                    }}
+                />
+                Usa imágenes grandes
+            </label>
             <hr />
-            <List items={results} />
+            <List imageSize={imageSize} />
+        </>
+    )
+}
+
+function List({ imageSize }) {
+    const listItems = places.map(place =>
+        <li key={place.id}>
+            <Place
+                place={place}
+                imageSize={imageSize}
+            />
+        </li>
+    );
+    return <ul>{listItems}</ul>;
+}
+
+function Place({ place, imageSize }) {
+    return (
+        <>
+            <PlaceImage
+                place={place}
+                imageSize={imageSize}
+            />
+            <p>
+                <b>{place.name}</b>
+                {': ' + place.description}
+            </p>
         </>
     );
 }
 
-function SearchBar({ query, onChange }) {
+function PlaceImage({ place, imageSize }) {
     return (
-        <label>
-            Buscar:{' '}
-            <input
-                value={query}
-                onChange={onChange}
-            />
-        </label>
-    );
-}
-
-function List({ items }) {
-    return (
-        <table>
-            <tbody>
-                {items.map(food => (
-                    <tr key={food.id}>
-                        <td>{food.name}</td>
-                        <td>{food.description}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
+        <img
+            src={getImageUrl(place)}
+            alt={place.name}
+            width={imageSize}
+            height={imageSize}
+        />
     );
 }

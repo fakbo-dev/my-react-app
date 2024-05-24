@@ -1,30 +1,36 @@
-export function filterItems(items, query) {
-    query = query.toLowerCase();
-    return items.filter(item =>
-        item.name.split(' ').some(word =>
-            word.toLowerCase().startsWith(query)
-        )
-    );
-}
-
-export const foods = [{
+export const places = [{
     id: 0,
-    name: 'Sushi',
-    description: 'El sushi es un plato tradicional japonés de arroz preparado en vinagre.'
+    name: 'Bo-Kaap en Ciudad del Cabo, Sudáfrica',
+    description: 'La tradición de elegir colores vivos para las casas comenzó a finales del siglo XX.',
+    imageId: 'K9HVAGH'
 }, {
     id: 1,
-    name: 'Dal',
-    description: 'La forma más común de preparar el dal es en forma de sopa a la que se pueden añadir cebollas, tomates y diversas especias.'
+    name: 'Pueblo del Arco Iris en Taichung, Taiwán',
+    description: 'Para salvar las casas de la demolición, Huang Yung-Fu, un residente local, pintó la totalidad de las 1.200 de ellas en 1924.',
+    imageId: '9EAYZrt'
 }, {
     id: 2,
-    name: 'Pierogi',
-    description: 'Los Pierogi son bolas de masa rellenas que se hacen envolviendo una masa sin levadura con un relleno salado o dulce y cociéndolas en agua hirviendo.'
+    name: 'Macromural de Pachuca, México',
+    description: 'Uno de los murales más grandes del mundo cubre las casas de un barrio en la ladera de una colina.',
+    imageId: 'DgXHVwu'
 }, {
     id: 3,
-    name: 'Shish kebab',
-    description: 'El shish kebab es una comida popular de cubos de carne ensartados y asados.'
+    name: 'Escalera Selarón en Río de Janeiro, Brasil',
+    description: 'Este lugar emblemático fue creado por Jorge Selarón, artista de origen chileno, como "homenaje al pueblo brasileño".',
+    imageId: 'aeO3rpI'
 }, {
     id: 4,
-    name: 'Dim sum',
-    description: 'Dim sum es una gran variedad de pequeños platos que los cantoneses disfrutan tradicionalmente en los restaurantes para el desayuno y el almuerzo.'
+    name: 'Burano, Italia',
+    description: 'Las casas están pintadas siguiendo un sistema de colores específico que se remonta al siglo XVI.',
+    imageId: 'kxsph5C'
+}, {
+    id: 5,
+    name: 'Chefchaouen, Marruecos',
+    description: 'Hay varias teorías sobre por qué las casas están pintadas de azul, entre ellas que el color repele a los mosquitos o que simboliza el cielo y el paraíso.',
+    imageId: 'rTqKo46'
+}, {
+    id: 6,
+    name: 'Aldea Cultural de Gamcheon en Busan, Corea del Sur',
+    description: 'En 2009, el pueblo se convirtió en un centro cultural pintando las casas y presentando exposiciones e instalaciones artísticas.',
+    imageId: 'ZfQOOzf'
 }];
