@@ -1,65 +1,39 @@
-import { useState } from 'react';
-import { places } from './data.js';
-import { getImageUrl } from './utils.js';
-import { context } from "./Context.jsx"
-import { useContext } from 'react';
+import { useRef } from "react"
+import { useState } from "react"
+function Test() {
 
+    const [startTime, setStartTime] = useState(null);
+    const [now, setNow] = useState(null);
+    const intervalRef = useRef(null);
 
-export default function App() {
-    const [isLarge, setIsLarge] = useState(false);
-    const imageSize = isLarge ? 150 : 100;
+    function handleStart() {
+
+        setStartTime(Date.now());
+        setNow(Date.now());
+
+        clearInterval(intervalRef.current);
+        intervalRef.current = setInterval(() => {
+            setNow(Date.now());
+        }, 10);
+
+    }
+
+    function handleStop() {
+        clearInterval(intervalRef.current);
+    }
+    let secondsPassed = 0;
+
+    if (startTime !== null && now !== null) {
+        secondsPassed = (now - startTime) / 1000;
+
+    }
     return (
         <>
-            <label>
-                <input
-                    type="checkbox"
-                    checked={isLarge}
-                    onChange={e => {
-                        setIsLarge(e.target.checked);
-                    }}
-                />
-                Usa imágenes grandes
-            </label>
-            <hr />
-            <List imageSize={imageSize} />
-        </>
-    )
-}
-
-function List({ imageSize }) {
-    const listItems = places.map(place =>
-        <li key={place.id}>
-            <Place
-                place={place}
-                imageSize={imageSize}
-            />
-        </li>
-    );
-    return <ul>{listItems}</ul>;
-}
-
-function Place({ place, imageSize }) {
-    return (
-        <>
-            <PlaceImage
-                place={place}
-                imageSize={imageSize}
-            />
-            <p>
-                <b>{place.name}</b>
-                {': ' + place.description}
-            </p>
+            <h1>Tiempo transcurrido: {secondsPassed.toFixed(3)}</h1>
+            <button onClick={handleStart}>Iniciar</button>
+            <button onClick={handleStop}>Detener</button>
         </>
     );
 }
 
-function PlaceImage({ place, imageSize }) {
-    return (
-        <img
-            src={getImageUrl(place)}
-            alt={place.name}
-            width={imageSize}
-            height={imageSize}
-        />
-    );
-}
+export default Test;
