@@ -32,6 +32,7 @@ function Test() {
             <h1>Tiempo transcurrido: {secondsPassed.toFixed(3)}</h1>
             <button onClick={handleStart}>Iniciar</button>
             <button onClick={handleStop}>Detener</button>
+            <button>yeah</button>
         </>
     );
 }
