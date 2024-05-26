@@ -1,22 +1,23 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import VideoPlay from "./VideoPlay";
+
+
 
 function Test() {
+    const [isPlaying, setIsPlaying] = useState(false);
+    const videoRef = useRef(null);
 
-    const inputRef = useRef(null);
 
-    function handleFocus() {
-        inputRef.current.focus();
+    function handleButton() {
+        setIsPlaying((i) => !i);
     }
     return (
         <>
-            <nav>
-                <button onClick={handleFocus}>Buscar</button>
-            </nav>
-            <br />
-            <input
-                type="text"
-                placeholder="Buscando algo?"
-                ref={inputRef} />
+            <button onClick={handleButton}>{isPlaying ? "Reproducir" : "pausar"}</button>
+            <VideoPlay
+                ref={videoRef}
+                src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                width={250} loop />
         </>
     )
 }
